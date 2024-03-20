@@ -50,4 +50,10 @@ context('Funcionalidade Login', () =>{
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-error').should('contain', 'Erro: A senha fornecida para o e-mail aluno_ebac@teste.com está incorreta. Perdeu a senha?')
     })
+
+    it.only('Deve fazer login com sucesso - Utilizando comandos customizados', () => {
+        cy.login('aluno_ebac@teste.com', 'teste@teste.com')
+        cy.get('.page-title').should('contain', 'Minha conta')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, aluno_ebac')
+    })
 })
